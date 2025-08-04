@@ -1,5 +1,6 @@
 import axios from "axios";
 
+//
 const api_url = 'http://localhost:5000/api';
 
 export const register = async (user) => {
