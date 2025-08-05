@@ -21,7 +21,8 @@ function Dashboard({ token, onLogout }) {
     };
 
     const handleToggleTask = async (task) => {
-        await updateTask(task.id, { ...task, status: !task.status }, token);
+        const newStatus = task.status === "complted" ? "active" : "completed"
+        await updateTask(task.id, { ...task, status: newStatus }, token);
         loadTasks();
     };
 

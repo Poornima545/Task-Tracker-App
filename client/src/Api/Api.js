@@ -27,13 +27,12 @@ export const createTask = (task, token) => {
     });
 };
 
-export const updateTask = (id, task, token) => {
-    return axios.put(`${api_url}/tasks/${id}`, task, {
-        headers: {
-            'Authorization': token
-        }
+export const updateTask = async (id, task, token) => {
+    return await axios.put(`${api_url}/tasks/${id}`, task, {
+        headers: { "Authorization": token }
     });
 };
+
 
 export const deleteTask = (id, token) => {
     return axios.delete(`${api_url}/tasks/${id}`, {
