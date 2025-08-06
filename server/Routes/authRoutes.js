@@ -6,8 +6,7 @@ module.exports = (db) => {
     // Register Route
     router.post('/register', (req, res) => {
         const { userName, email, phone, password } = req.body;
-         console.log("New user registered!:", { userName, email, phoneNumber, password });
-        
+        console.log("New user registered!:", { userName, email, phone, password });
 
         if (!userName || !email || !phone || !password) {
             return res.status(400).json({ error: 'All fields are required' });
@@ -25,7 +24,7 @@ module.exports = (db) => {
         );
     });
 
-    // login Route
+    // Login Route
     router.post('/login', (req, res) => {
         const { email, password } = req.body;
 
@@ -47,11 +46,16 @@ module.exports = (db) => {
             console.log("User found:", user);
 
             if (user.password !== password) {
-                alert('Incorrect password for user:', email);
+                console.error('Incorrect password for user:', email); 
                 return res.status(400).json({ error: 'Invalid Email or Password' });
             }
 
-            const token = jwt.sign({ id: user.id, email: user.email }, process.env.JWT_SECRET, { expiresIn: '1h' });
+            const token = jwt.sign(
+                { id: user.id, email: user.email },
+                process.env.JWT_SECRET,
+                { expiresIn: '1h' }
+            );
+
             return res.json({ token });
         });
     });

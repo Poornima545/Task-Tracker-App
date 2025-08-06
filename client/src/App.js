@@ -4,6 +4,7 @@ import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import ForgotPassword from "./Pages/Forgot-Password";
 import Dashboard from "./Components/Dashboard";
+import "./App.css"
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem('token'))
@@ -20,7 +21,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Task Tracker App with Login</h1>
+      <h1 className="mb-0">Task Tracker App</h1>
       <Routes>
         <Route path="/" element={<Login onLogin={handleLogin} />} />
          <Route path="/login" element={<Login onLogin={handleLogin} />} />

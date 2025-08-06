@@ -27,36 +27,44 @@ function Login({ onLogin }) {
 
     return (
         <>
-            <header>
-                <h1>Login</h1>
-            </header>
-            <main>
-                <form onSubmit={handleSubmit}>
-                    <input
-                        type="email"
-                        className="email"
-                        placeholder="Email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    />
-                    <input
-                        type="password"
-                        className="password"
-                        placeholder="Password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}  // 🔥 Add this handler
-                        required
-                    />
-                    <br />
-                    <p className="forgot-password">
-                        <Link to='/forgot-password'>Forgot Password</Link>
-                    </p>
-                    <button type="submit">Login</button>
-                    <p className="register-link">
-                        Not a member yet? <Link to="/register">Register</Link>
-                    </p>
-                </form>
+            <main className="d-flex justify-content-center align-items-center vh-100">
+                <article className="card shadow p-5" style={{ width: '500px' }}>
+
+                    <header className="mb-2 text-uppercase">
+                        <h1 className="text-center mb-4">Login</h1>
+                    </header>
+
+                    <form onSubmit={handleSubmit}>
+                        <div className="input-group mb-3">
+                            <input
+                                type="email"
+                                className="email form-control"
+                                placeholder="Email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <div className="input-group mb-3">
+                            <input
+                                type="password"
+                                className="password form-control"
+                                placeholder="Password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}  
+                                required
+                            />
+                        </div>
+                        {/* <br /> */}
+                        <div className="mb-3 text-end">
+                            <Link to='/forgot-password' className="small">Forgot Password?</Link>
+                        </div>
+                        <button type="submit" className="btn btn-primary w-100 text-uppercase">Login</button>
+                        <p className="mt-3 text-center">
+                            Not a member yet? <Link to="/register">Register</Link>
+                        </p>
+                    </form>
+                </article>
             </main>
         </>
     );
