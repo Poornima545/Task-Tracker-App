@@ -2,7 +2,6 @@ const express = require('express');
 const cors = require('cors');
 const sqlite3 = require('sqlite3').verbose();
 const dotenv = require('dotenv');
-
 dotenv.config();
 
 const authRoutes = require('./Routes/authRoutes');
@@ -39,7 +38,7 @@ db.run(`CREATE TABLE IF NOT EXISTS tasks (
   FOREIGN KEY (user_id) REFERENCES users(id)
 )`);
 
-// Routes
+// Routes...
 app.use('/api', authRoutes(db));
 app.use('/api/tasks', taskRoutes(db));
 

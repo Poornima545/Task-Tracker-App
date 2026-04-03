@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { forgotPassword } from '../Api/Api';
-
 
 function ForgotPassword() {
     const [email, setEmail] = useState('');
@@ -19,20 +18,28 @@ function ForgotPassword() {
     };
 
     return (
-        <div>
-            <h2>Forgot Password</h2>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="email"
-                    placeholder="Enter your email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                />
-                <button type="reset">Reset Password</button>
-                <p>Back to <Link to="/login">Login?</Link>
-                </p>
-            </form>
+        <div className="container mt-5">
+            <h2 className="mb-4 text-center">Forgot Password</h2>
+            <div className="row justify-content-center">
+                <div className="col-md-4">
+                    <form onSubmit={handleSubmit}>
+                        <div className="mb-3">
+                            <input
+                                type="email"
+                                className="form-control"
+                                placeholder="Enter your email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <button type="submit" className="btn btn-primary w-100 mb-3">Reset Password</button>
+                        <p className="text-center">
+                            Back to <Link to="/login">Login?</Link>
+                        </p>
+                    </form>
+                </div>
+            </div>
         </div>
     );
 }
